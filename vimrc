@@ -1,31 +1,31 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-command! MakeTags !ctags -R --exclude=node_modules --exclude=release --exclude=.git --exclude=out
+"command! MakeTags !ctags -R --exclude=node_modules --exclude=release --exclude=.git --exclude=out
 set path+=**
 noremap tt g<C-]>
-nnoremap ,html :-1read $HOME/.vim/.template.html<CR>3jwf>a
+"nnoremap ,html :-1read $HOME/.vim/.template.html<CR>3jwf>a
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-git'
+"Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Quramy/vim-js-pretty-template'
+"Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
+""Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-misc'
 "Plugin 'jelera/vim-javascript-syntax'
 "Plugin 'pangloss/vim-javascript'
-Plugin 'majutsushi/tagbar'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'ternjs/tern_for_vim'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'ternjs/tern_for_vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'Quramy/tsuquyomi'
+"Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
 "Plugin 'mxw/vim-jsx'
 "Plugin 'othree/yajs.vim'
@@ -46,22 +46,22 @@ syntax enable
         set undofile
         set lazyredraw          " redraw only when we need to.
 "------THEME------
-        set background=dark
+"        set background=dark
 "        set t_Co="256"
-        let g:solarized_termtrans = 1
-        let g:solarized_visibility = "high"
-        let g:solarized_contrast = "high"
-        let g:solarized_termcolors=256
-        colorscheme solarized
+"        let g:solarized_termtrans = 1
+"        let g:solarized_visibility = "high"
+"        let g:solarized_contrast = "high"
+"        let g:solarized_termcolors=256
+"        colorscheme solarized
 "        set guifont=Source\ Code\ Pro\ for\ Powerline:h14
         set number
         set showcmd             " show command in bottom bar
         set cursorline          " highlight current line
         set wildmenu            " visual autocomplete for command menu
         set laststatus=2
-        set statusline+=%#warningmsg#
-        set statusline+=%{SyntasticStatuslineFlag()}
-        set statusline+=%*
+"        set statusline+=%#warningmsg#
+"        set statusline+=%{SyntasticStatuslineFlag()}
+"        set statusline+=%*
 "------MOVE AROUND-----
         nnoremap <up> <nop>
         nnoremap <down> <nop>
@@ -115,10 +115,10 @@ syntax enable
         "set foldnestmax=10
         "set foldlevel=2
 "----PLUGIN : AIRLINE ----
-        let g:airline_powerline_fonts=1
-        let g:airline#extensions#tabline#enabled = 1 "Enable the list of buffers
-        let g:airline#extensions#tabline#fnamemod = ':t' "Show just the filename
-        let g:airline#extensions#tagbar#enabled = 1
+"        let g:airline_powerline_fonts=1
+"        let g:airline#extensions#tabline#enabled = 1 "Enable the list of buffers
+"        let g:airline#extensions#tabline#fnamemod = ':t' "Show just the filename
+"        let g:airline#extensions#tagbar#enabled = 1
 "-----PLUGIN : vim-javascript-----
 "        set conceallevel=1
         "set concealcursor=nvic
@@ -141,13 +141,13 @@ syntax enable
         "let g:syntastic_check_on_open = 1
         "let g:syntastic_auto_jump = 2
 "-----PLUGIN : TERN -----
-        let g:tern_show_argument_hints='on_hold'
-        nnoremap <silent> <leader>td :TernDef<cr>
-        nnoremap <silent> <leader>ts :TernDefSplit<cr>
-        nnoremap <silent> <leader>tr :TernRefs<cr>
+"        let g:tern_show_argument_hints='on_hold'
+"        nnoremap <silent> <leader>td :TernDef<cr>
+"        nnoremap <silent> <leader>ts :TernDefSplit<cr>
+"        nnoremap <silent> <leader>tr :TernRefs<cr>
         "let g:tern_map_prefix = '<leader>'
 "-----PLUGIN : TAGBAR ------
-        nnoremap <F8> : TagbarToggle
+"        nnoremap <F8> : TagbarToggle
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 "let g:NERDTreeWinSize = 40
 "nmap <silent> <leader>d <Plug>DashSearch
@@ -159,6 +159,6 @@ syntax enable
 
 
 "let g:dbext_default_profile_cfx='type=MYSQL:host=94.73.144.226:user=cfx_admin:passwd=p8oxXmD49beUfCZ:dbname=cfx_db'
-let g:tern_map_keys=1
+"let g:tern_map_keys=1
 
  
