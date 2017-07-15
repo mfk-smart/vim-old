@@ -17,9 +17,11 @@ Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 "Plugin 'jelera/vim-javascript-syntax'
 "Plugin 'pangloss/vim-javascript'
-"Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -97,7 +99,7 @@ syntax enable
         nmap <silent> <leader>ev :e $MYVIMRC<CR>
         nmap <silent> <leader>sv :so $MYVIMRC<CR>
 "-----TAGBAR-----
-        "nmap <F8> :TagbarToggle<CR>
+        nmap <leader>tb :TagbarToggle<CR>
 "----TABS-----
         set tabstop=4       " number of visual spaces per TAB
         set softtabstop=4   " number of spaces in tab when editing
