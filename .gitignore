@@ -1,1 +1,6 @@
 bundle/
+.swp/*
+.undo/*
+.backup/*
+!.*/.gitkeep
+

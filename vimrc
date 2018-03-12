@@ -1,10 +1,13 @@
 set nocompatible              " be iMproved, required
+set clipboard=unnamed
 filetype off                  " required
+
 command! MakeTags !ctags -R --exclude=node_modules --exclude=release --exclude=.git --exclude=out
 set path+=**
 noremap tt g<C-]>
-nnoremap ,html :-1read $HOME/.vim/.template.html<CR>3jwf>a
+nnoremap ,html :-1read $HOME/.vim/templates/html5.html<CR>4ko
 " set the runtime path to include Vundle and initialize
+"iabbrev html5 <!DOCTYPE HTML><CR><html><CR><head><CR><meta charset="utf-8"><CR><title><CR></title><CR><meta name="description" content="HTML5 Template"><CR><meta name="author" content="M. Fatih KILIÇ"><CR><link rel="stylesheet" href=""><CR></head><CR><body><CR><CR><CR><script src=""></script><CR></body><CR></html>4ji
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'scrooloose/nerdtree'
@@ -26,8 +29,11 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Quramy/tsuquyomi'
+"Plugin 'Quramy/tsuquyomi-vue'
+Plugin 'posva/vim-vue'
 Plugin 'leafgarland/typescript-vim'
-"Plugin 'mxw/vim-jsx'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'mxw/vim-jsx'
 "Plugin 'othree/yajs.vim'
 "" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -44,6 +50,9 @@ syntax enable
         vnoremap . :norm.<CR>
         set hidden
         set undofile
+        set undodir=~/.vim/.undo//
+        set directory=~/.vim/.swp//
+        set backupdir=~/.vim/.backup//
         set lazyredraw          " redraw only when we need to.
 "------THEME------
         set background=dark
@@ -120,14 +129,14 @@ syntax enable
         let g:airline#extensions#tabline#fnamemod = ':t' "Show just the filename
         let g:airline#extensions#tagbar#enabled = 1
 "-----PLUGIN : vim-javascript-----
-"        set conceallevel=1
+        "set conceallevel=1
         "set concealcursor=nvic
 "        let g:javascript_conceal_function   = "ƒ"
 "        let g:javascript_conceal_null       = "ø"
 "        let g:javascript_conceal_this       = "@"
 "        let g:javascript_conceal_return     = "⇚"
 "        let g:javascript_conceal_undefined  = "¿"
-""        let g:javascript_conceal_NaN        = "ℕ"
+"        let g:javascript_conceal_NaN        = "ℕ"
 "        let g:javascript_conceal_prototype  = "¶"
 "        let g:javascript_conceal_static     = "•"
 "        let g:javascript_conceal_super      = "Ω"
@@ -148,6 +157,10 @@ syntax enable
         "let g:tern_map_prefix = '<leader>'
 "-----PLUGIN : TAGBAR ------
         nnoremap <F8> : TagbarToggle
+"-----PLUGIN : YCM -----
+        let g:ycm_autoclose_preview_window_after_insertion = 1
+        let g:ycm_autoclose_preview_window_after_completion = 1
+
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 "let g:NERDTreeWinSize = 40
 "nmap <silent> <leader>d <Plug>DashSearch
