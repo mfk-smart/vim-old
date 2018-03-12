@@ -4,6 +4,7 @@ command! MakeTags !ctags -R --exclude=node_modules --exclude=release --exclude=.
 set path+=**
 noremap tt g<C-]>
 nnoremap ,html :-1read $HOME/.vim/.template.html<CR>3jwf>a
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -31,6 +32,7 @@ Plugin 'leafgarland/typescript-vim'
 "Plugin 'othree/yajs.vim'
 "" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -45,6 +47,9 @@ syntax enable
         set hidden
         set undofile
         set lazyredraw          " redraw only when we need to.
+        set undodir=~/.vim/.undo//
+        set backupdir=~/.vim/.backup//
+        set directory=~/.vim/.swp//
 "------THEME------
         set background=dark
 "        set t_Co="256"
@@ -148,6 +153,10 @@ syntax enable
         "let g:tern_map_prefix = '<leader>'
 "-----PLUGIN : TAGBAR ------
         nnoremap <F8> : TagbarToggle
+"-----PLUGIN : VIM-GO ------
+        autocmd FileType go nmap <leader>r :<C-u>GoRun %<cr>
+        autocmd FileType go nmap <leader>b :<C-u>GoBuild %<cr>
+        
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 "let g:NERDTreeWinSize = 40
 "nmap <silent> <leader>d <Plug>DashSearch
