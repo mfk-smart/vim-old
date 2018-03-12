@@ -37,6 +37,7 @@ Plugin 'mxw/vim-jsx'
 "Plugin 'othree/yajs.vim'
 "" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -54,6 +55,9 @@ syntax enable
         set directory=~/.vim/.swp//
         set backupdir=~/.vim/.backup//
         set lazyredraw          " redraw only when we need to.
+        set undodir=~/.vim/.undo//
+        set backupdir=~/.vim/.backup//
+        set directory=~/.vim/.swp//
 "------THEME------
         set background=dark
 "        set t_Co="256"
@@ -160,7 +164,9 @@ syntax enable
 "-----PLUGIN : YCM -----
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_autoclose_preview_window_after_completion = 1
-
+"-----PLUGIN : VIM-GO ------
+        autocmd FileType go nmap <leader>r :<C-u>GoRun %<cr>
+        autocmd FileType go nmap <leader>b :<C-u>GoBuild %<cr>
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 "let g:NERDTreeWinSize = 40
 "nmap <silent> <leader>d <Plug>DashSearch
