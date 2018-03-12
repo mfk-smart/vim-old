@@ -38,6 +38,7 @@ Plugin 'mxw/vim-jsx'
 "" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'fatih/vim-go'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -167,6 +168,12 @@ syntax enable
 "-----PLUGIN : VIM-GO ------
         autocmd FileType go nmap <leader>r :<C-u>GoRun %<cr>
         autocmd FileType go nmap <leader>b :<C-u>GoBuild %<cr>
+"-----PLUGIN : vim-markdown-preview -----
+        let vim_markdown_preview_github=1       
+        "let vim_markdown_preview_browser='Google Chrome'
+        
+
+
 "autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 "let g:NERDTreeWinSize = 40
 "nmap <silent> <leader>d <Plug>DashSearch
