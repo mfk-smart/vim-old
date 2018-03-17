@@ -39,12 +39,19 @@ Plugin 'mxw/vim-jsx'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'fatih/vim-go'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'nvie/vim-flake8'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 set encoding=utf-8
 syntax enable
+
+let python_highlight_all=1
+syntax on
 
 "-----GENERAL-----
         inoremap jk <ESC>
@@ -55,10 +62,13 @@ syntax enable
         set undodir=~/.vim/.undo//
         set directory=~/.vim/.swp//
         set backupdir=~/.vim/.backup//
-        set lazyredraw          " redraw only when we need to.
+        set lazyredraw "redraw only when we need to.
         set undodir=~/.vim/.undo//
         set backupdir=~/.vim/.backup//
         set directory=~/.vim/.swp//
+        
+        set listchars=tab:▸\ ,eol:¬
+
 "------THEME------
         set background=dark
 "        set t_Co="256"
@@ -123,6 +133,9 @@ syntax enable
         nnoremap <F2> :e ++enc=windows-1254<CR>
         nnoremap <F3> :e ++enc=utf-8<CR>
 "----FOLDING----
+        set foldmethod=indent
+        set foldlevel=99
+        nnoremap <space> za
         "set foldmethod=syntax
         "set foldenable
         "set foldlevelstart=10
@@ -155,36 +168,37 @@ syntax enable
         "let g:syntastic_check_on_open = 1
         "let g:syntastic_auto_jump = 2
 "-----PLUGIN : TERN -----
+        let g:tern_map_keys=1
         let g:tern_show_argument_hints='on_hold'
         nnoremap <silent> <leader>td :TernDef<cr>
         nnoremap <silent> <leader>ts :TernDefSplit<cr>
         nnoremap <silent> <leader>tr :TernRefs<cr>
-        "let g:tern_map_prefix = '<leader>'
 "-----PLUGIN : TAGBAR ------
         nnoremap <F8> : TagbarToggle
 "-----PLUGIN : YCM -----
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_autoclose_preview_window_after_completion = 1
+        map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "-----PLUGIN : VIM-GO ------
         autocmd FileType go nmap <leader>r :<C-u>GoRun %<cr>
         autocmd FileType go nmap <leader>b :<C-u>GoBuild %<cr>
 "-----PLUGIN : vim-markdown-preview -----
         let vim_markdown_preview_github=1       
         "let vim_markdown_preview_browser='Google Chrome'
-        
+"-----PLUGIN : SimplyFold  -----
+        let g:SimpylFold_docstring_preview=1 
 
+highlight BadWhitespace ctermfg=0 ctermbg=226
 
-"autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-"let g:NERDTreeWinSize = 40
-"nmap <silent> <leader>d <Plug>DashSearch
-"let b:javascript_fold=1
-"
-"let g:loaded_youcompleteme = 1
-"let g:ycm_register_as_syntastic_checker = 0
-" show any linting errors immediately
+au BufNewFile,BufRead *.py:
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
 
-
-"let g:dbext_default_profile_cfx='type=MYSQL:host=94.73.144.226:user=cfx_admin:passwd=p8oxXmD49beUfCZ:dbname=cfx_db'
-let g:tern_map_keys=1
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
  
