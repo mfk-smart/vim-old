@@ -6,6 +6,7 @@ command! MakeTags !ctags -R --exclude=node_modules --exclude=release --exclude=.
 set path+=**
 noremap tt g<C-]>
 nnoremap ,html :-1read $HOME/.vim/templates/html5.html<CR>4ko
+iabbrev cbash ```bash<CR>```jkO<BS>
 " set the runtime path to include Vundle and initialize
 "iabbrev html5 <!DOCTYPE HTML><CR><html><CR><head><CR><meta charset="utf-8"><CR><title><CR></title><CR><meta name="description" content="HTML5 Template"><CR><meta name="author" content="M. Fatih KILIÇ"><CR><link rel="stylesheet" href=""><CR></head><CR><body><CR><CR><CR><script src=""></script><CR></body><CR></html>4ji
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -162,10 +163,12 @@ syntax on
         let g:syntastic_check_on_wq = 0
         "let g:syntastic_javascript_checkers = ['eslint'] " use jshint
         let g:syntastic_javascript_checkers = ['jshint'] " use jshint
+        let g:syntastic_json_checkers = ['jsonlint'] " use jshint
+        let g:syntastic_python_checkers = ['python'] " use jshint
 "        let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-        "let g:syntastic_always_populate_loc_list = 1
-        "let g:syntastic_auto_loc_list = 1
-        "let g:syntastic_check_on_open = 1
+        let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_auto_loc_list = 1
+        let g:syntastic_check_on_open = 1
         "let g:syntastic_auto_jump = 2
 "-----PLUGIN : TERN -----
         let g:tern_map_keys=1
@@ -183,12 +186,12 @@ syntax on
         autocmd FileType go nmap <leader>r :<C-u>GoRun %<cr>
         autocmd FileType go nmap <leader>b :<C-u>GoBuild %<cr>
 "-----PLUGIN : vim-markdown-preview -----
-        let vim_markdown_preview_github=1       
+        let vim_markdown_preview_github=1
         "let vim_markdown_preview_browser='Google Chrome'
 "-----PLUGIN : SimplyFold  -----
-        let g:SimpylFold_docstring_preview=1 
+        let g:SimpylFold_docstring_preview=1
 
-highlight BadWhitespace ctermfg=0 ctermbg=226
+highlight BadWhitespace ctermfg=0 ctermbg=236
 
 au BufNewFile,BufRead *.py:
     \ set tabstop=4
@@ -201,4 +204,4 @@ au BufNewFile,BufRead *.py:
 
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
- 
+au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null" 
